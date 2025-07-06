@@ -13,6 +13,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/users', [UserController::class, 'store']); // Cadastro de usuário
 
+// Rota para obter o token CSRF
+Route::get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
 
 Route::middleware('auth:sanctum')->group(function () {
 

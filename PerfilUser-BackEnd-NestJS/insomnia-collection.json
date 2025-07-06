@@ -1,0 +1,364 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-01-15T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_0",
+      "parentId": "fld_auth",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/auth/register",
+      "name": "Registrar Usuário",
+      "description": "Endpoint para registrar um novo usuário",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Silva\",\n  \"email\": \"joao@example.com\",\n  \"password\": \"123456\",\n  \"confirmPassword\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705320000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1",
+      "parentId": "fld_auth",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/auth/login",
+      "name": "Login",
+      "description": "Endpoint para fazer login e receber o token JWT",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"joao@example.com\",\n  \"password\": \"123456\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705319000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2",
+      "parentId": "fld_auth",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/auth/refresh",
+      "name": "Refresh Token",
+      "description": "Endpoint para renovar o token JWT usando refresh token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refreshToken\": \"{{ _.refreshToken }}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705318000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3",
+      "parentId": "fld_auth",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/auth/logout",
+      "name": "Logout",
+      "description": "Endpoint para fazer logout e invalidar o refresh token",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refreshToken\": \"{{ _.refreshToken }}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.accessToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705317000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4",
+      "parentId": "fld_users",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/users",
+      "name": "Listar Usuários",
+      "description": "Endpoint para listar todos os usuários (requer autenticação)",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.accessToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705316000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5",
+      "parentId": "fld_users",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/users/{{ _.userId }}",
+      "name": "Buscar Usuário por ID",
+      "description": "Endpoint para buscar um usuário específico por ID (requer autenticação)",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.accessToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705315000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6",
+      "parentId": "fld_users",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/users/{{ _.userId }}",
+      "name": "Atualizar Usuário",
+      "description": "Endpoint para atualizar dados de um usuário (requer autenticação)",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"João Silva Atualizado\",\n  \"email\": \"joao.atualizado@example.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.accessToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705314000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7",
+      "parentId": "fld_users",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "url": "{{ _.baseUrl }}/users/{{ _.userId }}",
+      "name": "Deletar Usuário",
+      "description": "Endpoint para deletar um usuário (requer autenticação)",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.accessToken }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705313000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_main",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "🔐 Autenticação",
+      "description": "Endpoints relacionados à autenticação",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1705320000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_users",
+      "parentId": "wrk_main",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "👥 Usuários",
+      "description": "Endpoints relacionados aos usuários",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1705310000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_main",
+      "parentId": null,
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "Perfil User API - NestJS",
+      "description": "Coleção de requests para testar a API do sistema de perfil de usuário desenvolvida em NestJS",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_main",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:3000/api",
+        "accessToken": "",
+        "refreshToken": "",
+        "userId": ""
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "accessToken",
+          "refreshToken",
+          "userId"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1705320000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_dev",
+      "parentId": "env_base",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "Development",
+      "data": {
+        "baseUrl": "http://localhost:3000/api",
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "refreshToken": "refresh_token_aqui",
+        "userId": "user_id_aqui"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "accessToken",
+          "refreshToken",
+          "userId"
+        ]
+      },
+      "color": "#7d69cb",
+      "isPrivate": false,
+      "metaSortKey": 1705320000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_prod",
+      "parentId": "env_base",
+      "modified": 1705320000000,
+      "created": 1705320000000,
+      "name": "Production",
+      "data": {
+        "baseUrl": "https://api.perfiluser.com/api",
+        "accessToken": "",
+        "refreshToken": "",
+        "userId": ""
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "accessToken",
+          "refreshToken",
+          "userId"
+        ]
+      },
+      "color": "#d9534f",
+      "isPrivate": false,
+      "metaSortKey": 1705320000001,
+      "_type": "environment"
+    }
+  ]
+} 
