@@ -1,4 +1,5 @@
 <template>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <AppHeader />
 
   <Login v-if="page === 'login'" @loginSuccess="page = 'usuarios'; loadUsers()" />
@@ -15,7 +16,6 @@
 
   <AppFooter />
 </template>
-
 <script>
 import AppHeader from './components/Header.vue';
 import AppFooter from './components/Footer.vue';

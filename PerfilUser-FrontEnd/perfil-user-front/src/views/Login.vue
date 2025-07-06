@@ -27,28 +27,46 @@
     </div>
   </div>
 </template>
-
 <script>
 import api from '@/axios';
+import axios from 'axios';
 
 export default {
   name: 'UserLogin',
   emits: ['loginSuccess'],
   data() {
     return {
-      form: { email: '', password: '' }
+      form: {
+        email: '',
+        password: ''
+      }
     };
   },
   methods: {
     async login() {
       try {
-        await api.get('/sanctum/csrf-cookie');
-        await api.post('/login', this.form);
+        // 1️⃣ Garante que o Laravel envie o cookie de CSRF
+        axios.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true }).then(() => {
+          axios.post('http://localhost:8000/api/login', this.form, {
+            withCredentials: true
+          });
+        });
+
+        // 2️⃣ Garante que o cookie seja enviado na próxima requisição
+       //const response = await api.post('/login', this.form, {
+          //withCredentials: true
+       // });
+
+        console.log('Login efetuado:', response.data);
         this.$emit('loginSuccess');
-      } catch {
-        alert('Login falhou');
+      } catch (error) {
+        console.error('Erro ao fazer login:', error.response?.data || error.message);
+        alert('Email ou senha incorretos');
       }
     }
+
+
   }
 };
 </script>
+
